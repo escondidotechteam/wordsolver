@@ -293,7 +293,8 @@
         </div>
 
         <div class="menu-panel">
-            <div class="panel-title">Welcome, BigLittleThings</div>
+            <!-- Dynamic placeholder for the user's name -->
+            <div class="panel-title" id="welcome-message">Welcome, Player</div>
             
             <div class="button-stack">
                 <a href="chat.html" class="menu-btn btn-chat">Live Community Chat</a>
@@ -367,16 +368,19 @@
     // Live Smartlink URL Path
     const SMARTLINK_URL = "https://tuxedoarbourannouncement.com/r45u84gfw9?key=0350d574076e4f1bda57f47e74bc1329";
 
-    // Check if the viewport is mobile or tablet size
-    const isMobileOrTablet = window.innerWidth <= 850 || /Mobi|iPad|iPhone|Android/i.test(navigator.userAgent);
-
-    if (isMobileOrTablet) {
-        // Inject the glowing orange bonus button into the main menu block stack
-        document.getElementById('inline-smartlink-container').innerHTML = `
-            <a href="${SMARTLINK_URL}" target="_blank" class="menu-btn btn-smartlink">
-                🚀 Free Game Expansion Packs 🚀
-            </a>`;
+    // 1. Fetch current logged-in username dynamically from storage
+    const savedUsername = localStorage.getItem('username');
+    if (savedUsername) {
+        document.getElementById('welcome-message').innerText = `Welcome, ${savedUsername}`;
+    } else {
+        document.getElementById('welcome-message').innerText = "Welcome, Player";
     }
+
+    // 2. Inject the glowing orange bonus ad button for BOTH PC and Mobile layout stacks
+    document.getElementById('inline-smartlink-container').innerHTML = `
+        <a href="${SMARTLINK_URL}" target="_blank" class="menu-btn btn-smartlink">
+            🚀 Free Game Expansion Packs 🚀
+        </a>`;
 
     function playLevel(levelId) {
         console.log("Loading level data string for: " + levelId);
