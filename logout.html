@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logging Out...</title>
+
+    <style>
+        :root {
+            --bg-color: #121212;
+            --panel-bg: #1e1e1e;
+            --text-color: #ffffff;
+            --border-color: #333333;
+            --danger-color: #c0392b;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logout-panel {
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+        }
+
+        h1 {
+            margin-top: 0;
+            color: var(--danger-color);
+        }
+
+        p {
+            margin: 15px 0;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 12px 24px;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            filter: brightness(1.1);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="logout-panel">
+        <h1>Logging Out...</h1>
+        <p>Your session has been cleared.</p>
+        <p id="status">Redirecting to login page...</p>
+
+        index.htmlReturn Now</a>
+    </div>
+
+    <script>
+        // Clear saved login information
+        localStorage.removeItem('username');
+
+        // Optional: clear everything stored by the site
+        // localStorage.clear();
+
+        // Redirect after a short delay
+        setTimeout(() => {
+            window.location.href = "index.html";
+        }, 2000);
+    </script>
+
+</body>
+</html>
